@@ -1,6 +1,6 @@
 package calculator;
 
-import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Console;
 
 public class UserInputDto {
 
@@ -8,10 +8,8 @@ public class UserInputDto {
     private String inputSeparator;
     private String inputNumber;
 
-    Scanner scanner = new Scanner(System.in);
-
     UserInputDto() {
-        this.input = scanner.nextLine();
+        this.input = Console.readLine();
     }
 
     public String getInput() {
