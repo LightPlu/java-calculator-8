@@ -1,6 +1,6 @@
 package calculator;
 
-public class InputValidate {
+public class InputValidator {
 
     public void validateInputWithStartCustom(String input) {
         validateCustomForm(input);
@@ -40,13 +40,13 @@ public class InputValidate {
     }
 
     public void validateTypeOfNumber(String input, String customDelimiter) {
-        String basedelimiter = "[.,]";
+        String baseDelimiter = "[.,]";
 
         if (customDelimiter != null && !customDelimiter.isEmpty()) {
-            basedelimiter = basedelimiter.substring(0, basedelimiter.length() - 1) + customDelimiter + "]";
+            baseDelimiter = baseDelimiter.substring(0, baseDelimiter.length() - 1) + customDelimiter + "]";
         }
 
-        String[] numbers = input.split(basedelimiter);
+        String[] numbers = input.split(baseDelimiter);
 
         if (numbers[0].isEmpty()) {
             throw new IllegalArgumentException(); // 만약 숫자 부분 문자열이 숫자가 아닌 구분자로 바로 시작한다면 에러 발생(구분자로 시작하면 numbers 첫번째 값이 비어있기 때문)
@@ -54,7 +54,10 @@ public class InputValidate {
 
         try {
             for (String number : numbers) {
-                Integer.parseInt(number);     // 구분자로 분리했을 때 해당 문자열이 숫자가 아니라면 에러 발생
+                int parsingNumber = Integer.parseInt(number); // 구분자로 분리했을 때 해당 문자열이 숫자가 아니라면 에러 발생
+                if (parsingNumber < 0) {
+                    throw new IllegalArgumentException();
+                }
             }
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
@@ -63,12 +66,12 @@ public class InputValidate {
     }
 
     public void validateDelimiterCount(String input, String customDelimiter) {
-        String basedelimiter = "[.,]";
+        String baseDelimiter = "[.,]";
         long customCount = 0;
         if (customDelimiter != null && !customDelimiter.isEmpty()) {
-            basedelimiter = basedelimiter.substring(0, basedelimiter.length() - 1) + customDelimiter + "]";
+            baseDelimiter = baseDelimiter.substring(0, baseDelimiter.length() - 1) + customDelimiter + "]";
         }
-        String[] numbers = input.split(basedelimiter);
+        String[] numbers = input.split(baseDelimiter);
         long commaCount = input.chars().filter(ch -> ch == ',').count();
         long dotCount = input.chars().filter(ch -> ch == '.').count();
         if (customDelimiter != null && !customDelimiter.isEmpty()) {

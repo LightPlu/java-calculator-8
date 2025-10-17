@@ -5,11 +5,11 @@ import java.util.ArrayList;
 public class Separator {
     String baseDelimiter = "[.,]";
     ArrayList<Integer> result = new ArrayList<>();
-    InputValidate inputValidate = new InputValidate();
+    InputValidator inputValidator = new InputValidator();
     Calculator calculator = new Calculator();
 
     public int separateNumberWithCustom(String input) {
-        inputValidate.validateInputWithStartCustom(input);
+        inputValidator.validateInputWithStartCustom(input);
 
         String numberInclude = input.substring(5);
         String customDelimiter = input.substring(2, 3);
@@ -25,7 +25,7 @@ public class Separator {
     }
 
     public int separateNumberNoCustom(String input) {
-        inputValidate.validateInputNotStartCustom(input);
+        inputValidator.validateInputNotStartCustom(input);
         String[] numbers = input.split(baseDelimiter);
 
         for (String number : numbers) {
