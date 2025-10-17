@@ -46,6 +46,10 @@ public class InputValidator {
             baseDelimiter = baseDelimiter.substring(0, baseDelimiter.length() - 1) + customDelimiter + "]";
         }
 
+        if (input.isEmpty()) {
+            return;
+        }
+
         String[] numbers = input.split(baseDelimiter);
 
         if (numbers[0].isEmpty()) {
@@ -68,10 +72,17 @@ public class InputValidator {
     public void validateDelimiterCount(String input, String customDelimiter) {
         String baseDelimiter = "[,:]";
         long customCount = 0;
+
+        if (input == null || input.isEmpty()) {
+            return;
+        }
+
         if (customDelimiter != null && !customDelimiter.isEmpty()) {
             baseDelimiter = baseDelimiter.substring(0, baseDelimiter.length() - 1) + customDelimiter + "]";
         }
+
         String[] numbers = input.split(baseDelimiter);
+
         long commaCount = input.chars().filter(ch -> ch == ',').count();
         long colonCount = input.chars().filter(ch -> ch == ':').count();
         if (customDelimiter != null && !customDelimiter.isEmpty()) {
