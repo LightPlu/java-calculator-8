@@ -1,7 +1,18 @@
 package calculator;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+
+        CalculatorController CalculatorController = new CalculatorController();
+        UserInputDto userinputDto = new UserInputDto();
+        int result;
+
+        System.out.println("덧셈할 문자열을 입력해 주세요.");
+        userinputDto.setInput(Console.readLine());
+        result = CalculatorController.CalculatorControl(userinputDto.getInput());
+
+        System.out.println("결과 : " + result);
     }
 }
