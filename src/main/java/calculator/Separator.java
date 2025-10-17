@@ -6,8 +6,9 @@ public class Separator {
     String baseDelimiter = "[.,]";
     ArrayList<Integer> result = new ArrayList<>();
     InputValidate inputValidate = new InputValidate();
+    Calculator calculator = new Calculator();
 
-    public ArrayList<Integer> separateNumberWithCustom(String input) {
+    public int separateNumberWithCustom(String input) {
         inputValidate.validateInputWithStartCustom(input);
 
         String numberInclude = input.substring(5);
@@ -20,10 +21,10 @@ public class Separator {
             result.add(Integer.parseInt(number));
         }
 
-        return result;
+        return calculator.sum(result);
     }
 
-    public ArrayList<Integer> separateNumberNoCustom(String input) {
+    public int separateNumberNoCustom(String input) {
         inputValidate.validateInputNotStartCustom(input);
         String[] numbers = input.split(baseDelimiter);
 
@@ -31,7 +32,7 @@ public class Separator {
             result.add(Integer.parseInt(number));
         }
 
-        return result;
+        return calculator.sum(result);
     }
 
 }
