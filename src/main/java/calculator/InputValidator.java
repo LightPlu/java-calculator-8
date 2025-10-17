@@ -40,7 +40,7 @@ public class InputValidator {
     }
 
     public void validateTypeOfNumber(String input, String customDelimiter) {
-        String baseDelimiter = "[.,]";
+        String baseDelimiter = "[,:]";
 
         if (customDelimiter != null && !customDelimiter.isEmpty()) {
             baseDelimiter = baseDelimiter.substring(0, baseDelimiter.length() - 1) + customDelimiter + "]";
@@ -66,14 +66,14 @@ public class InputValidator {
     }
 
     public void validateDelimiterCount(String input, String customDelimiter) {
-        String baseDelimiter = "[.,]";
+        String baseDelimiter = "[,:]";
         long customCount = 0;
         if (customDelimiter != null && !customDelimiter.isEmpty()) {
             baseDelimiter = baseDelimiter.substring(0, baseDelimiter.length() - 1) + customDelimiter + "]";
         }
         String[] numbers = input.split(baseDelimiter);
         long commaCount = input.chars().filter(ch -> ch == ',').count();
-        long dotCount = input.chars().filter(ch -> ch == '.').count();
+        long colonCount = input.chars().filter(ch -> ch == ':').count();
         if (customDelimiter != null && !customDelimiter.isEmpty()) {
             customCount = input.chars().filter(ch -> ch == customDelimiter.charAt(0)).count();
         }
@@ -82,7 +82,7 @@ public class InputValidator {
             throw new IllegalArgumentException(); // 만약 숫자 부분 문자열이 숫자가 아닌 구분자로 바로 시작한다면 에러 발생(구분자로 시작하면 numbers 첫번째 값이 비어있기 때문)
         }
 
-        if (numbers.length != (dotCount + commaCount + customCount + 1)) {        // 구분자가 동시에 2개이상 왔을 때 에러 발생
+        if (numbers.length != (colonCount + commaCount + customCount + 1)) {        // 구분자가 동시에 2개이상 왔을 때 에러 발생
             throw new IllegalArgumentException();
         }
     }

@@ -3,7 +3,7 @@ package calculator;
 import java.util.ArrayList;
 
 public class Separator {
-    String baseDelimiter = "[.,]";
+    String baseDelimiter = "[,:]";
     ArrayList<Integer> result = new ArrayList<>();
     InputValidator inputValidator = new InputValidator();
     Calculator calculator = new Calculator();
