@@ -1,12 +1,7 @@
 package calculator;
 
 public class InputValidate {
-
-    InputValidate(String input) {
-        validateInputWithStartCustom(input);
-        validateInputNotStartCustom(input);
-    }
-
+    
     public void validateInputWithStartCustom(String input) {
         validateCustomForm(input);
         validateTypeOfNumber(input, extractCustomDelimiter(input));
