@@ -1,16 +1,14 @@
 package calculator;
 
-import camp.nextstep.edu.missionutils.Console;
-
 public class UserInputDto {
 
-    private final String input;
-
-    UserInputDto() {
-        this.input = Console.readLine();
-    }
+    private String input;
 
     public String getInput() {
         return input;
+    }
+
+    public void setInput(String input) {
+        this.input = input;
     }
 }
