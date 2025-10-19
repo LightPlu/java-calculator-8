@@ -12,7 +12,7 @@ public class Calculator {
         }
 
         if (result < 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("오버플로우가 발생하였습니다.");
         }
 
         return result;

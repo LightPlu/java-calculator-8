@@ -20,23 +20,23 @@ public class InputValidator {
     public void validateCustomForm(String input) {
         // 커스텀 구분자를 표시하는 문자열이 5보다 작다면 에러 발생
         if (input.length() < 5) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("커스텀 구분자 형식이 올바르지 않습니다.");
         }
 
         String delimiterInclude = input.substring(0, 5);
         String customDelimiter = input.substring(2, 3);
 
         if (!delimiterInclude.startsWith("//")) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("커스텀 구분자 형식이 올바르지 않습니다.");
         }
 
         if (!delimiterInclude.endsWith("\\n")) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("커스텀 구분자 형식이 올바르지 않습니다.");
         }
 
         // 숫자 혹은 문자가 온다면 에러 발생
         if (customDelimiter.matches("[0-9a-zA-Z]")) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("커스텀 구분자에는 숫자 혹은 문자가 올 수 없습니다");
         }
 
     }
@@ -57,7 +57,7 @@ public class InputValidator {
         // 만약 숫자 부분 문자열이 숫자가 아닌 구분자로 바로 시작한다면 에러 발생
         // (구분자로 시작하면 numbers 첫번째 값이 비어있기 때문)
         if (numbers[0].isEmpty()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("숫자 부분에는 구분자가 먼저 올 수 없습니다.");
         }
 
         try {
@@ -69,7 +69,7 @@ public class InputValidator {
                 }
             }
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("숫자 부분에는 숫자를 제외한 값이 올 수 없습니다.");
         }
 
     }
@@ -98,12 +98,12 @@ public class InputValidator {
         // 만약 숫자 부분 문자열이 숫자가 아닌 구분자로 바로 시작한다면 에러 발생
         // (구분자로 시작하면 numbers 첫번째 값이 비어있기 때문)
         if (numbers[0].isEmpty()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("숫자 부분에는 구분자가 먼저 올 수 없습니다.");
         }
 
         // 구분자가 동시에 2개이상 왔을 때 에러 발생
         if (numbers.length != (colonCount + commaCount + customCount + 1)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("구분자를 1개씩 사용하여 숫자를 구분해주십시오.");
         }
     }
 
