@@ -1,4 +1,6 @@
-package calculator;
+package calculator.controller;
+
+import calculator.domain.Separator;
 
 public class CalculatorController {
 

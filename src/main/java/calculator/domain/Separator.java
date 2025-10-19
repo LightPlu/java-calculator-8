@@ -1,5 +1,6 @@
-package calculator;
+package calculator.domain;
 
+import calculator.validator.InputValidator;
 import java.util.ArrayList;
 
 public class Separator {

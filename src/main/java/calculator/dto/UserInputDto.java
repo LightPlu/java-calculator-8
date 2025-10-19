@@ -1,4 +1,4 @@
-package calculator;
+package calculator.dto;
 
 public class UserInputDto {
 
