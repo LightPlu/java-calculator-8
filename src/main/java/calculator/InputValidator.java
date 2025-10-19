@@ -85,7 +85,8 @@ public class InputValidator {
 
         long commaCount = input.chars().filter(ch -> ch == ',').count();
         long colonCount = input.chars().filter(ch -> ch == ':').count();
-        if (customDelimiter != null && !customDelimiter.isEmpty()) {
+        if (customDelimiter != null && !customDelimiter.isEmpty() && !customDelimiter.equals(",")
+                && !customDelimiter.equals(":")) {
             customCount = input.chars().filter(ch -> ch == customDelimiter.charAt(0)).count();
         }
 
