@@ -7,7 +7,7 @@ public class Application {
 
         CalculatorController CalculatorController = new CalculatorController();
         UserInputDto userinputDto = new UserInputDto();
-        int result;
+        long result;
 
         System.out.println("덧셈할 문자열을 입력해 주세요.");
         userinputDto.setInput(Console.readLine());

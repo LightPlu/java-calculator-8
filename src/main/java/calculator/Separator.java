@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class Separator {
     String baseDelimiter = "[,:]";
-    ArrayList<Integer> result = new ArrayList<>();
+    ArrayList<Long> result = new ArrayList<>();
     InputValidator inputValidator = new InputValidator();
     Calculator calculator = new Calculator();
 
-    public int separateNumberWithCustom(String input) {
+    public long separateNumberWithCustom(String input) {
         inputValidator.validateInputWithStartCustom(input);
 
         String numberInclude = input.substring(5);
@@ -22,13 +22,13 @@ public class Separator {
         }
 
         for (String number : numbers) {
-            result.add(Integer.parseInt(number));
+            result.add(Long.parseLong(number));
         }
 
         return calculator.sum(result);
     }
 
-    public int separateNumberNoCustom(String input) {
+    public long separateNumberNoCustom(String input) {
         inputValidator.validateInputNotStartCustom(input);
         String[] numbers = input.split(baseDelimiter);
 
@@ -37,7 +37,7 @@ public class Separator {
         }
 
         for (String number : numbers) {
-            result.add(Integer.parseInt(number));
+            result.add(Long.parseLong(number));
         }
 
         return calculator.sum(result);

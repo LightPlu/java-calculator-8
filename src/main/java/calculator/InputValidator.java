@@ -58,7 +58,7 @@ public class InputValidator {
 
         try {
             for (String number : numbers) {
-                int parsingNumber = Integer.parseInt(number); // 구분자로 분리했을 때 해당 문자열이 숫자가 아니라면 에러 발생
+                long parsingNumber = Long.parseLong(number); // 구분자로 분리했을 때 해당 문자열이 숫자가 아니라면 에러 발생
                 if (parsingNumber < 0) {
                     throw new IllegalArgumentException();
                 }

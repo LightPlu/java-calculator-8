@@ -4,9 +4,10 @@ import java.util.ArrayList;
 
 public class Calculator {
 
-    public int sum(ArrayList<Integer> numbers) {
-        int result = 0;
-        for (Integer number : numbers) {
+    public long sum(ArrayList<Long> numbers) {
+        long result = 0;
+
+        for (Long number : numbers) {
             result += number;
         }
         return result;

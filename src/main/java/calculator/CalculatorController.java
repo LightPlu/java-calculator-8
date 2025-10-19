@@ -4,7 +4,7 @@ public class CalculatorController {
 
     Separator separator;
 
-    public int CalculatorControl(String input) {
+    public long CalculatorControl(String input) {
         separator = new Separator();
         if (input.startsWith("/")) {
             return separator.separateNumberWithCustom(input);
