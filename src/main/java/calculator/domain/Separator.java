@@ -18,7 +18,9 @@ public class Separator {
         baseDelimiter = baseDelimiter.substring(0, baseDelimiter.length() - 1) + customDelimiter + "]";
         String[] numbers = numberInclude.split(baseDelimiter);
 
-        if (numbers[0].isEmpty()) { // 입력값에 구분자는 존재하지만 숫자 부분이 ""로 들어왔을때 calculator.sum의 반환을 0으로 강제
+        // 입력값에 구분자는 존재하지만 숫자 부분이 ""로 들어왔을때
+        // calculator.sum의 반환을 0으로 강제
+        if (numbers[0].isEmpty()) {
             return 0;
         }
 
@@ -33,7 +35,8 @@ public class Separator {
         inputValidator.validateInputNotStartCustom(input);
         String[] numbers = input.split(baseDelimiter);
 
-        if (numbers[0].isEmpty()) { // 입력값이 ""로 들어왔을때 calculator.sum의 반환을 0으로 강제
+        // 입력값이 ""로 들어왔을때 calculator.sum의 반환을 0으로 강제
+        if (numbers[0].isEmpty()) {
             return 0;
         }
 

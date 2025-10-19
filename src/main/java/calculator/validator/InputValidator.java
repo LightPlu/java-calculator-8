@@ -18,8 +18,9 @@ public class InputValidator {
     }
 
     public void validateCustomForm(String input) {
+        // 커스텀 구분자를 표시하는 문자열이 5보다 작다면 에러 발생
         if (input.length() < 5) {
-            throw new IllegalArgumentException();    // 커스텀 구분자를 표시하는 문자열이 5보다 작다면 에러 발생
+            throw new IllegalArgumentException();
         }
 
         String delimiterInclude = input.substring(0, 5);
@@ -33,7 +34,8 @@ public class InputValidator {
             throw new IllegalArgumentException();
         }
 
-        if (customDelimiter.matches("[0-9a-zA-Z]")) {    //숫자 혹은 문자가 온다면 에러 발생
+        // 숫자 혹은 문자가 온다면 에러 발생
+        if (customDelimiter.matches("[0-9a-zA-Z]")) {
             throw new IllegalArgumentException();
         }
 
@@ -52,13 +54,16 @@ public class InputValidator {
 
         String[] numbers = input.split(baseDelimiter);
 
+        // 만약 숫자 부분 문자열이 숫자가 아닌 구분자로 바로 시작한다면 에러 발생
+        // (구분자로 시작하면 numbers 첫번째 값이 비어있기 때문)
         if (numbers[0].isEmpty()) {
-            throw new IllegalArgumentException(); // 만약 숫자 부분 문자열이 숫자가 아닌 구분자로 바로 시작한다면 에러 발생(구분자로 시작하면 numbers 첫번째 값이 비어있기 때문)
+            throw new IllegalArgumentException();
         }
 
         try {
             for (String number : numbers) {
-                long parsingNumber = Long.parseLong(number); // 구분자로 분리했을 때 해당 문자열이 숫자가 아니라면 에러 발생
+                // 구분자로 분리했을 때 해당 문자열이 숫자가 아니라면 에러 발생
+                long parsingNumber = Long.parseLong(number);
                 if (parsingNumber < 0) {
                     throw new IllegalArgumentException();
                 }
@@ -90,11 +95,14 @@ public class InputValidator {
             customCount = input.chars().filter(ch -> ch == customDelimiter.charAt(0)).count();
         }
 
+        // 만약 숫자 부분 문자열이 숫자가 아닌 구분자로 바로 시작한다면 에러 발생
+        // (구분자로 시작하면 numbers 첫번째 값이 비어있기 때문)
         if (numbers[0].isEmpty()) {
-            throw new IllegalArgumentException(); // 만약 숫자 부분 문자열이 숫자가 아닌 구분자로 바로 시작한다면 에러 발생(구분자로 시작하면 numbers 첫번째 값이 비어있기 때문)
+            throw new IllegalArgumentException();
         }
 
-        if (numbers.length != (colonCount + commaCount + customCount + 1)) {        // 구분자가 동시에 2개이상 왔을 때 에러 발생
+        // 구분자가 동시에 2개이상 왔을 때 에러 발생
+        if (numbers.length != (colonCount + commaCount + customCount + 1)) {
             throw new IllegalArgumentException();
         }
     }
