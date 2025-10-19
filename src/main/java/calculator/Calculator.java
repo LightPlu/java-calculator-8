@@ -10,6 +10,11 @@ public class Calculator {
         for (Long number : numbers) {
             result += number;
         }
+
+        if (result < 0) {
+            throw new IllegalArgumentException();
+        }
+
         return result;
     }
 }
